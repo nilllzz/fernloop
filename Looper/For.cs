@@ -59,10 +59,10 @@ namespace Looper
                 parameters.ReferencedAssemblies.Add(@"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll");
                 var results = provider.CompileAssemblyFromFile(parameters, new[] { newPath });
 
-                Assembly ass = Assembly.Load(File.ReadAllBytes(Assembly.GetExecutingAssembly().Location + "1"));
+                Assembly asm = Assembly.Load(File.ReadAllBytes(Assembly.GetExecutingAssembly().Location + "1"));
                 File.Delete(Assembly.GetExecutingAssembly().Location + "1");
 
-                var t = ass.GetType("Looper.F0r");
+                var t = asm.GetType("Looper.F0r");
                 var m = t.GetMethod("Loop");
                 m.Invoke(null, new object[] { start, end, step, body });
 
